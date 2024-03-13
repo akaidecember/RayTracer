@@ -9,12 +9,12 @@
 using std::shared_ptr;
 using std::make_shared;
 
-class hittable_list : public hittable {
+class hittable_list : public hittable{
   public:
     std::vector<shared_ptr<hittable>> objects;
 
     // Default constructor
-    hittable_list() {
+    hittable_list(){
 
     }
 
@@ -34,8 +34,8 @@ class hittable_list : public hittable {
         hit_record temp_rec;
         bool hit_anything = false;
         auto closest_so_far = ray_t.max;
-        for (const auto& object : objects) {
-            if (object->hit(r, interval(ray_t.min, closest_so_far), temp_rec)) {
+        for(const auto& object : objects){
+            if (object->hit(r, interval(ray_t.min, closest_so_far), temp_rec)){
                 hit_anything = true;
                 closest_so_far = temp_rec.t;
                 rec = temp_rec;
